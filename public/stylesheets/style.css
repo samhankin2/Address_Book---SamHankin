@@ -1,0 +1,78 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+
+}
+
+th,td{
+	padding: 15px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.editButton, .deleteButton, .addButton{
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+}
+
+.deleteButton{
+	background-color: #FF4D26;
+}
+
+.editButton{
+	background-color: #565DFC;
+}
+
+.addButton{
+  background-color: #2AF740;
+}
+
+.searchContainer{
+	display: flex;
+	flex-direction: row
+}
+
+
+
+
+.UserInput, .searchBar, input[type=submit]{
+  
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.UserInput{
+	width: 100%;
+}
+
+
+
+}
+
+
+
+
+

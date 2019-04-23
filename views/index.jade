@@ -1,0 +1,48 @@
+extends layout
+
+block content
+	h1= "Address Book"
+
+	button(onclick='move("add")', class="addButton", placeholder = "Search by name..") +
+	//moves to the add route to add a new user
+
+
+
+	//a form that is the search bar and uses the get method for searching.
+	form(name = 'searchbar', action = './', method = 'get')
+		div(class="seachContainer")
+			input(type="text", name="search", autofocus, class="searchBar", maxlength="10")
+			input(type="submit", value="search", class="searchButton")
+	div(style="overflow-x:auto")
+		table
+			thead
+				tr
+					th Name
+					th Address
+					th PostCode
+					th Phone Number
+					th Email
+					th DoB
+			tbody
+				//jade/pugjs inline javascript. This loops through the data passed from the routing and attaches each datavalue to the correct table data
+				-var idCount = 0
+				-each item in rows
+					tr
+						td= item.dataValues.name
+						td= item.dataValues.address
+						td= item.dataValues.postcode
+						td= item.dataValues.phone
+						td= item.dataValues.email
+						td= item.dataValues.dobString
+						td
+							//each row has a delete and edit form that has a hidden id number so it can delete or edit the correct article in the database
+							form(action='/delete', method='post')
+								input(type = "hidden", name = "idNumber", value = item.id)
+								input(type='submit', value='Delete', class = "deleteButton")
+
+						td
+							form(action='/edit', method='post')
+								input(type = "hidden", name = "idNumber" value = item.id)
+								input(type='submit', value='Edit', class = "editButton")
+
+	script(src="javascripts/EditJS.js")

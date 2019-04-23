@@ -1,0 +1,59 @@
+extends layout
+
+block content
+	h1= "Edit Contact..."
+	button(onclick='move("")') Home
+	
+	
+
+
+
+	//an html form that goes to the editting route that processes an sql query that adds to the database
+	//uses post method and also uses the validation method that ensures name and number are entered
+	form(name = 'addForm', action='/editing', method='post', onsubmit="return Validation()")
+		
+		
+		label Name
+		input(type="text", name="name", value=result.name, class="UserInput")
+		//the address inputs have both a name and ID, the name is what will be extracted from the post body, and the ID is what
+		//the javascript functiont that splits the address up uses. 
+		label Address Line 1
+		input(type="text", name ="addressln1", id="addressln0", value = "", class="UserInput")
+	
+		label Address Line 2
+		input(type="text", name ="addressln2",id="addressln1", value = "", class="UserInput")
+	
+		label Address Line 3
+		input(type="text",name ="addressln3", id="addressln2", value="", class="UserInput")
+	
+		label Town/City
+		input(type="text", name ="city",id="addressln3", value="", class="UserInput")
+	
+		label Postcode
+		input(type="text", name="postcode", value=result.postcode, class="UserInput")
+	
+		label Phone Number
+		//this uses Regex pattern to ensure numbers are entered
+		//ensures numbers arent to large for sql int size
+		input(type="text", name="phone", pattern="\\d*",value=result.phone, class="UserInput")
+	
+		label Email
+		input(type="email", name="email", value=result.email, class="UserInput")
+	
+		label Date of Birth
+		input(type="date", name="dob", value=result.dobString, class="UserInput")
+		input(type = "hidden", name = "idNumber", value = result.id)
+		input(type = "hidden", id = "addressCombined", value = result.address)
+		//these inputs are hidden. the id so it can be updated at the correct place and the address combined that
+		//javascript function uses. These dont need to be displayed to the user but are useful for processing the data behind
+		//the scenes
+	
+		input(type="submit", value="add")
+
+
+	script(src="javascripts/EditJS.js", onload="splitAddress()")
+
+	
+
+
+

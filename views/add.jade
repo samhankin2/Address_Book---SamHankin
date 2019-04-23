@@ -1,0 +1,51 @@
+extends layout
+
+block content
+	h1= "Add new Contact..."
+	//calls the move without a url, which goes to home page.
+	button(onclick='move("")') Home
+
+
+	//an html form that goes to the adding route that processes adding to the database
+	//uses post method and also uses the validation method that ensures name and number are entered
+	form(name = 'addForm', action='/adding', method='post', onsubmit="return Validation()")
+		
+		
+		label Name
+		input(type="text", name="name", class="UserInput")
+	
+		label Address Line 1
+		input(type="text", name ="addressln1",class="UserInput")
+	
+		label Address Line 2
+		input(type="text", name ="addressln2",class="UserInput")
+	
+		label Address Line 3
+		input(type="text",name ="addressln3",class="UserInput")
+	
+		label Town/City
+		input(type="text", name ="city",class="UserInput")
+	
+		label Postcode
+		input(type="text", name="postcode", class="UserInput")
+	
+		label Phone Number
+		//this uses Regex pattern to ensure numbers are entered
+		input(type="text", name="phone", pattern="\\d*",class="UserInput")
+	
+		label Email
+		input(type="email", name="email",class="UserInput")
+	
+		label Date of Birth
+		input(type="date", name="dob",class="UserInput")
+
+	
+		input(type="submit", value="add")
+
+
+	script(src="javascripts/EditJS.js")
+
+	
+
+
+
